@@ -37,6 +37,8 @@ export default function Root(){
     const [cartCount, setCartCount ] = useState(0)
     const [cartAmount, setCartAmount] = useState(0)
 
+    
+
     function addToCart(productId,name,price, quantityAdded){
         setCart(prevCart => {
             const itemExists = prevCart.find(item =>item.id ===  productId)
@@ -45,7 +47,7 @@ export default function Root(){
                     item.id === productId 
                         ? {...item, cartQuantity : item.cartQuantity + quantityAdded}
                         : item
-                )
+                ).filter(element => element.cartQuantity > 0)
             }
             else {
                 return [...prevCart,{id : productId, name: name, price : price, cartQuantity : quantityAdded } ]
