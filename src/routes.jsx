@@ -4,6 +4,8 @@ import Shop from "./routes/shop";
 import Carte from "./routes/carte";
 
 
+
+
 const routes = [  
     {
             path: "/",
@@ -24,7 +26,7 @@ const routes = [
                     action : contactAction,
                     */
                 },
-                                {
+                {
                     path : "cart",
                     element : <Carte />
                     /*

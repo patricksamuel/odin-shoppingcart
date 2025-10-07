@@ -1,7 +1,10 @@
-export default function CartDisplayPage(){
+export default function CartDisplayPage({name, price,quantity}){
     return (
         <>
-            <p>I will display cart content here</p>
+            
+            <em>{name}</em>
+            <p>$ {price}</p>
+            <p>{quantity} X</p>
         </>
     )
 }

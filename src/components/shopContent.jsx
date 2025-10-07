@@ -1,8 +1,11 @@
 // shopContent.jsx
-export default function ShopContent() {
+
+
+export default function ShopContent({name, price}) {
     return(
         <>
-            <p>Shop display content here</p>
+            <em>{name}</em>
+            <p>$ {price}</p>
         </>
     )
 }
