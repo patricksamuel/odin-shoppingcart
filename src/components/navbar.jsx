@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom"
-export default function Navbar(){
+import { Link, useOutletContext } from "react-router-dom"
+export default function Navbar({cartCount}){
+
     return (
         <>
             <h1>This is navbar</h1>
@@ -8,6 +9,8 @@ export default function Navbar(){
             <Link to="shop">Shop</Link>
             <br />
             <Link to="Cart">Cart</Link>
+            <br />
+            <p>{cartCount} in the cart</p>
         </>
     )
 

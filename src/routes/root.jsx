@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/navbar";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 
 
 const initialProducts = [
@@ -27,12 +27,6 @@ const initialProducts = [
   }
 ];
 const initialCarts =[
-    {
-    id: 1,
-    name: "T-Shirt",
-    price: 20,
-    cartQuantity : 2
-    }
 ]
 
 
@@ -41,6 +35,7 @@ export default function Root(){
     const [products, setProducts] = useState(initialProducts)
     const [cart, setCart] = useState(initialCarts)
     const [cartCount, setCartCount ] = useState(0)
+    const [cartAmount, setCartAmount] = useState(0)
 
     function addToCart(productId,name,price, quantityAdded){
         setCart(prevCart => {
@@ -59,11 +54,18 @@ export default function Root(){
         })
     }
 
+    useEffect(() => {
+        const totalCount = cart.reduce((sum,element)=>sum +element.cartQuantity,0)
+        const totalAmount = cart.reduce((sum,element)=>sum + element.cartQuantity * element.price,0 )
+        setCartCount(prev => totalCount)
+        setCartAmount(prev => totalAmount)
+    },[cart])
+
     return(
         <>
             <p>route test</p>
-            <Navbar />
-            <Outlet context={{products, setProducts,cart, addToCart,cartCount, setCartCount}}/>
+            <Navbar cartCount= {cartCount}/>
+            <Outlet context={{products, setProducts,cart, addToCart,cartCount, setCartCount, cartAmount}}/>
         </>
 
     )
