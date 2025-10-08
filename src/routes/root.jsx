@@ -37,6 +37,27 @@ export default function Root(){
     const [cartCount, setCartCount ] = useState(0)
     const [cartAmount, setCartAmount] = useState(0)
 
+    useEffect(
+      ()=>{
+      async function fetchProducts(){
+          try {
+            const updatedCards = await Promise.all(
+            products.map(async product =>{
+                const response = await fetch(`hhttps://fakestoreapi.com/products`)
+                const data= await response.json()
+                return {...product,name: data.title , price : Number(data.price) }
+              })
+            )
+            setProducts(updatedCards)
+          }
+          catch(err){
+            console.log("error fetching products")
+          }
+
+      }
+      fetchProducts()
+    },[])
+
     
 
     function addToCart(productId,name,price, quantityAdded){

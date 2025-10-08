@@ -18,7 +18,7 @@ export default function Carte(){
                 </div>
                 
             ))}
-            <p>Total Amount {cartAmount}</p>
+            <p>Total Amount $ {cartAmount}</p>
         </>
     )
 }
