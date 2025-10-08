@@ -20,7 +20,7 @@ export default function Shop(){
             {products.map(product => (
                 
                 <div key = {product.id}>
-                    < ShopContent name={product.name} price={product.price}  />
+                    < ShopContent name={product.name} price={product.price} imageUrl = {product.imageUrl}  />
                     <input
                         type="number"
                         name="quantityAdded"

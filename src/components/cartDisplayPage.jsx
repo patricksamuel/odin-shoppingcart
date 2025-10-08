@@ -1,11 +1,14 @@
-export default function CartDisplayPage({name, price,quantity}){
+export default function CartDisplayPage({id, name, price, quantity, addToCart}){
     return (
-        <>
-            
-            <em>{name}</em>
-            <p>$ {price}</p>
-            
-            <p>{quantity} X</p>
-        </>
+        <tr>
+            <td><em>{name}</em></td>
+            <td><p>$ {price}</p></td>
+            <td><p>{quantity} X</p></td>
+            <td>
+                <button onClick={() => addToCart(id,name,price, 1)}>+1</button>
+            </td>
+            <td><button onClick={() => addToCart(id,name,price, -1)}>-1</button></td>
+        </tr>
+
     )
 }

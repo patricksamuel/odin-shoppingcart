@@ -4,6 +4,7 @@ import { use, useEffect, useState } from "react";
 
 
 const initialProducts = [
+    /*
   {
     id: 1,
     name: "T-Shirt",
@@ -25,7 +26,7 @@ const initialProducts = [
     stock: 600,
     supplier: "Zara"
   }
-];
+*/];
 const initialCarts =[
 ]
 
@@ -41,15 +42,12 @@ export default function Root(){
       ()=>{
       async function fetchProducts(){
           try {
-            const updatedCards = await Promise.all(
-            products.map(async product =>{
-                const response = await fetch(`hhttps://fakestoreapi.com/products`)
+                const response = await fetch(`https://fakestoreapi.com/products`)
                 const data= await response.json()
-                return {...product,name: data.title , price : Number(data.price) }
-              })
-            )
-            setProducts(updatedCards)
+                const updatedProducts = data.map(element =>   ({ id: element.id, name: element.title,price: element.price, imageUrl:element.image}))
+                setProducts(prevProducts => [...prevProducts, ...updatedProducts])
           }
+            
           catch(err){
             console.log("error fetching products")
           }
