@@ -84,7 +84,6 @@ export default function Root(){
 
     return(
         <>
-            <p>route test</p>
             <Navbar cartCount= {cartCount}/>
             <Outlet context={{products, setProducts,cart, addToCart,cartCount, setCartCount, cartAmount}}/>
         </>
