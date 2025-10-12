@@ -44,7 +44,7 @@ export default function Root(){
           try {
                 const response = await fetch(`https://fakestoreapi.com/products`)
                 const data= await response.json()
-                const updatedProducts = data.map(element =>   ({ id: element.id, name: element.title,price: element.price, imageUrl:element.image}))
+                const updatedProducts = data.map(element =>   ({ id: element.id, name: element.title,price: element.price, imageUrl:element.image, description:element.description}))
                 setProducts(prevProducts => [...prevProducts, ...updatedProducts])
           }
             
